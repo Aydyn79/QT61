@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Server package documentation &#8212; документация Messenger 1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="server-package-documentation">
+<h1>Server package documentation<a class="headerlink" href="#server-package-documentation" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Модуль серверной части приложения для обмена сообщениями.
+Обеспечивает прием, обработку и последующую отправку сообщений пользователей,
+Обеспечивает регистрацию новых пользователей и авторизацию
+Текст сообщений шифруется с помощью алгоритма шифрования RSA.</p>
+<p>Файл cerver_app.py (основной файл серверного приложения)
+поддерживает запуск с помощью коммандной строки.
+Например:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">server_app.py</span> <span class="pre">{имя</span> <span class="pre">сервера}</span> <span class="pre">{порт}</span></code></p>
+<ol class="arabic simple">
+<li><p>{имя сервера} - ip-адрес сервера (по умолчанию: «» - поддержка соединений с любых ip-адресов)</p></li>
+<li><p>{порт} - порт сервера (по умолчанию: 7777)</p></li>
+</ol>
+<p>Параметры командной строки являются необязательными,
+если их не ввести, программа будет использовать значения по умолчанию.</p>
+<p>Например допустимы следующие параметры коммандной строки:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">server_app.py</span></code></p></li>
+</ul>
+<p><em>Запуск приложения с ip-адресом по умолчанию «» и номером порта «7777».</em></p>
+<p><em>Необходимо учесть, что при вводе значения порта сервера проверяется его валидность</em>
+<em>При значениях порта менее 1024 и более 65535 будет выведено сообщение:</em>
+<em>Попытка запуска клиента с неподходящим номером порта</em>
+<em>Допустимы адреса с 1024 до 65535. Клиент завершается.</em></p>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+<section id="module-server.add_user">
+<span id="server-add-user-module"></span><h2>server.add_user module<a class="headerlink" href="#module-server.add_user" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.add_user.RegisterUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.add_user.</span></span><span class="sig-name descname"><span class="pre">RegisterUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.add_user.RegisterUser" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<p>Класс диалог регистрации пользователя на сервере.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.add_user.RegisterUser.save_data">
+<span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.add_user.RegisterUser.save_data" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод проверки правильности ввода и сохранения в базу нового пользователя.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-server.config_window">
+<span id="server-config-window-module"></span><h2>server.config_window module<a class="headerlink" href="#module-server.config_window" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.config_window.</span></span><span class="sig-name descname"><span class="pre">ConfigWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<p>Класс окно настроек.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow.initUI">
+<span class="sig-name descname"><span class="pre">initUI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow.initUI" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Настройки окна</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow.open_file_dialog">
+<span class="sig-name descname"><span class="pre">open_file_dialog</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow.open_file_dialog" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод обработчик открытия окна выбора папки.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow.save_server_config">
+<span class="sig-name descname"><span class="pre">save_server_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow.save_server_config" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод сохранения настроек.
+Проверяет правильность введённых данных и
+если всё правильно сохраняет ini файл.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-server.main_window">
+<span id="server-main-window-module"></span><h2>server.main_window module<a class="headerlink" href="#module-server.main_window" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.main_window.MainWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.main_window.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.main_window.MainWindow" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QMainWindow</span></code></p>
+<p>Класс - основное окно сервера.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.main_window.MainWindow.create_users_model">
+<span class="sig-name descname"><span class="pre">create_users_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.main_window.MainWindow.create_users_model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод заполняющий таблицу активных пользователей.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.main_window.MainWindow.reg_user">
+<span class="sig-name descname"><span class="pre">reg_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.main_window.MainWindow.reg_user" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод создающий окно регистрации пользователя.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.main_window.MainWindow.rem_user">
+<span class="sig-name descname"><span class="pre">rem_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.main_window.MainWindow.rem_user" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод создающий окно удаления пользователя.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.main_window.MainWindow.server_config">
+<span class="sig-name descname"><span class="pre">server_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.main_window.MainWindow.server_config" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод создающий окно с настройками сервера.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.main_window.MainWindow.show_statistics">
+<span class="sig-name descname"><span class="pre">show_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.main_window.MainWindow.show_statistics" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод создающий окно со статистикой клиентов.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="server-msg-processor-module">
+<h2>server.msg_processor module<a class="headerlink" href="#server-msg-processor-module" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+<section id="module-server.remove_user">
+<span id="server-remove-user-module"></span><h2>server.remove_user module<a class="headerlink" href="#module-server.remove_user" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.remove_user.DelUserDialog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.remove_user.</span></span><span class="sig-name descname"><span class="pre">DelUserDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.remove_user.DelUserDialog" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<p>Класс - диалог выбора контакта для удаления.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.remove_user.DelUserDialog.all_users_fill">
+<span class="sig-name descname"><span class="pre">all_users_fill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.remove_user.DelUserDialog.all_users_fill" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод заполняющий список пользователей.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.remove_user.DelUserDialog.remove_user">
+<span class="sig-name descname"><span class="pre">remove_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.remove_user.DelUserDialog.remove_user" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод - обработчик удаления пользователя.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="server-server-base-module">
+<h2>server.server_base module<a class="headerlink" href="#server-server-base-module" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+<section id="module-server.server_gui">
+<span id="server-server-gui-module"></span><h2>server.server_gui module<a class="headerlink" href="#module-server.server_gui" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_gui.ConfigWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.server_gui.</span></span><span class="sig-name descname"><span class="pre">ConfigWindow</span></span><a class="headerlink" href="#server.server_gui.ConfigWindow" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<p>Класс окна настроек</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_gui.ConfigWindow.initUI">
+<span class="sig-name descname"><span class="pre">initUI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.server_gui.ConfigWindow.initUI" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_gui.HistoryWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.server_gui.</span></span><span class="sig-name descname"><span class="pre">HistoryWindow</span></span><a class="headerlink" href="#server.server_gui.HistoryWindow" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<p>Класс окна с историей пользователей</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_gui.HistoryWindow.initUI">
+<span class="sig-name descname"><span class="pre">initUI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.server_gui.HistoryWindow.initUI" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_gui.MainWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.server_gui.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><a class="headerlink" href="#server.server_gui.MainWindow" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QMainWindow</span></code></p>
+<p>Класс основного окна</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_gui.MainWindow.initUI">
+<span class="sig-name descname"><span class="pre">initUI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.server_gui.MainWindow.initUI" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="server.server_gui.create_stat_model">
+<span class="sig-prename descclassname"><span class="pre">server.server_gui.</span></span><span class="sig-name descname"><span class="pre">create_stat_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_gui.create_stat_model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>GUI - Функция реализующая заполнение таблицы историей сообщений.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="server.server_gui.gui_create_model">
+<span class="sig-prename descclassname"><span class="pre">server.server_gui.</span></span><span class="sig-name descname"><span class="pre">gui_create_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_gui.gui_create_model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>GUI - Создание таблицы QModel, для отображения в окне программы.</p>
+</dd></dl>
+
+</section>
+<section id="module-server.stat_window">
+<span id="server-stat-window-module"></span><h2>server.stat_window module<a class="headerlink" href="#module-server.stat_window" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.stat_window.StatWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.stat_window.</span></span><span class="sig-name descname"><span class="pre">StatWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.stat_window.StatWindow" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<p>Класс - окно со статистикой пользователей</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.stat_window.StatWindow.create_stat_model">
+<span class="sig-name descname"><span class="pre">create_stat_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.stat_window.StatWindow.create_stat_model" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод реализующий заполнение таблицы статистикой сообщений.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.stat_window.StatWindow.initUI">
+<span class="sig-name descname"><span class="pre">initUI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.stat_window.StatWindow.initUI" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-server">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-server" title="Ссылка на этот заголовок">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Messenger</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Nexter.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
